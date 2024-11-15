@@ -5,8 +5,9 @@ import App from './App.jsx'
 import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider } from "react-router-dom";
 import Layout from "./Layout.jsx";
 import { Home, About, Contact, User, Github} from "./components/index.js";
+import { githubinfoloader } from "./components/Github/Github.jsx";
 
-// Another Way to Declare
+// Another Way to Declare the router
 // const router = createBrowserRouter([
 //   {
 //     path: '/',
@@ -32,9 +33,11 @@ const router = createBrowserRouter(
       <Route path="" element={ <Home />} />
       <Route path="about" element={ <About />} />
       <Route path="contact" element={ <Contact />} />
-      <Route path="github" element={ <Github />} />
-      <Route path="user/:userid" element={ <User />} />
-
+      <Route
+        loader={githubinfoloader}
+        path="github/:username?"
+        element={<Github />} />
+      <Route path="user/:userid" element={<User />} />
     </Route> 
   )
 )
